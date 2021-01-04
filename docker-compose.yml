@@ -1,0 +1,21 @@
+version: '3'
+services:
+  react-app:
+    image: react-app
+    stdin_open: true
+    ports: 
+      - "3000:3000"
+  api-server:
+    image: api-server
+    ports:
+      - "4000:4000"
+  db:
+    image: postgres
+    environment:
+        POSTGRES_PASSWORD: password
+        POSTGRES_USER: postgres
+        POSTGRES_DB: pern
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./postgres/data:/var/lib/postgresql/data
